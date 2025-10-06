@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"os/signal"
+	"runtime"
 	"strconv"
 	"sync"
 	"syscall"
@@ -13,7 +14,7 @@ import (
 )
 
 func main() {
-	var numWorkers int = 4
+	var numWorkers int = runtime.NumCPU()
 	if len(os.Args) > 1 {
 		if n, err := strconv.Atoi(os.Args[1]); err == nil && n > 0 {
 			numWorkers = n
